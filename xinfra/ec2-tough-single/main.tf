@@ -1,12 +1,10 @@
-# main.tf
-
 provider "aws" {
   region = "ap-northeast-2" # 사용할 AWS 리전
 }
 
 # 보안 그룹 설정: SSH(22) 및 HTTP(80) 트래픽 허용
 resource "aws_security_group" "nginx_sg" {
-  name_prefix = "nginx-sg"
+  name_prefix = "nginx-sg-"
 
   ingress {
     description = "Allow SSH"
@@ -44,7 +42,6 @@ resource "aws_key_pair" "ec2_key" {
   public_key = tls_private_key.example.public_key_openssh
 }
 
-
 # EC2 인스턴스 생성
 resource "aws_instance" "nginx_instance" {
   ami             = "ami-08b09b6acd8d62254" # Amazon Linux 2 AMI (리전별로 AMI ID가 다를 수 있음)
@@ -65,7 +62,6 @@ resource "aws_instance" "nginx_instance" {
   }
 }
 
-
 # 출력: EC2 인스턴스의 퍼블릭 IP 주소
 output "nginx_instance_public_ip" {
   value       = aws_instance.nginx_instance.public_ip
@@ -78,3 +74,5 @@ output "ssh_private_key_pem" {
   description = "Private key for SSH access"
   sensitive   = true
 }
+
+
