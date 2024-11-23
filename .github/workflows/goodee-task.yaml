@@ -44,6 +44,7 @@ jobs:
           repository: archi-chiki/simple-service  
           ref: main
           path: .
+          token: ${{ secrets.PAT }}
       
       # 이미지 태그 업데이트
       - name: 6. 쿠버네티스 매니페스트 파일 이미지 태그 업데이트
@@ -59,8 +60,10 @@ jobs:
       # 변경사항 커밋 및 푸시
       - name: 7.서비스 리포지토리 변경사항 커밋 및 푸시
         run: |
-          git config --global user.name 'ChangheeKim'
-          git config --global user.email 'kchanghee@icloud.com'
+          # git config --global user.name 'ChangheeKim'
+          # git config --global user.email 'kchanghee@icloud.com'
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git commit -am "Update image tag to ${{ env.DOCKER_TAG }}"
           git remote set-url origin https://${{ secrets.PAT }}@github.com/archi-chiki/simple-service.git
-          git push origin main
+          git push origin
