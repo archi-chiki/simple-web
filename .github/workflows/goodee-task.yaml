@@ -62,5 +62,5 @@ jobs:
           git config --global user.name 'ChangheeKim'
           git config --global user.email 'kchanghee@icloud.com'
           git commit -am "Update image tag to ${{ env.DOCKER_TAG }}"
-          git remote set-url origin https://${{ secrets.PAT }}@github.com/archi-chiki/istory-service.git
+          git remote set-url origin https://${{ secrets.PAT }}@github.com/archi-chiki/simple-service.git
           git push origin main
