@@ -1,4 +1,4 @@
-# 3
+# 4
 name: Simple Web CI with conatiner
 
 on:
@@ -8,8 +8,8 @@ on:
     branches: [ "main" ]
 
 permissions:
-  contents: write # read
-  actions: write # read
+  contents: read
+  actions: read
 
 jobs:
   build:
